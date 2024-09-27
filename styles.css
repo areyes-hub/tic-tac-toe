@@ -1,0 +1,153 @@
+* {
+    padding: 0;
+    margin: 0;
+    appearance: none;
+}
+
+html {
+    background-color: rgb(56, 56, 80);
+    height: 100%;
+    width: 100%;
+}
+
+input {
+    border-radius: 8px;
+    border-style: none;
+    outline: 0;
+    background-color: lightblue;
+    line-height: 20px;
+    padding-left: 4px;
+    box-shadow: inset 1px 1px 8px rgb(84, 84, 113);
+    font-family: sans-serif;
+}
+
+button {
+    margin-top: 16px;
+    padding: 4px;
+    border: none;
+    border-radius: 8px;
+    color: lightgray;
+    box-shadow: 1px 2px 8px rgb(27, 27, 45);
+    background-color: rgb(84, 84, 113);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    box-shadow: 1px 1px 2px rgb(27, 27, 45);
+    cursor: pointer;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 24px;
+}
+
+.board {
+    height: 450px;
+    width: 450px;
+    margin: auto;
+    display: grid;
+    background-color: rgb(84, 84, 113);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    box-shadow: 1px 2px 16px rgb(27, 27, 45);
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    color: yellow;
+    font-size: 72px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.cell:hover {
+    cursor: pointer;
+    background-color: rgb(57, 57, 111);
+}
+
+.tl {
+    border-right: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+}
+
+.tc {
+    border-right: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+    border-left: solid 1px lightgray;
+}
+
+.tr {
+    border-left: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+}
+
+.cl {
+    border-right: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+    border-top: solid 1px lightgray;
+}
+
+.cc {
+    border: solid 1px lightgray;
+}
+
+.cr {
+    border-left: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+    border-top: solid 1px lightgray;
+}
+
+.bl {
+    border-right: solid 1px lightgray;
+    border-top: solid 1px lightgray;
+}
+
+.bc {
+    border-right: solid 1px lightgray;
+    border-top: solid 1px lightgray;
+    border-left: solid 1px lightgray;
+}
+
+.br {
+    border-left: solid 1px lightgray;
+    border-top: solid 1px lightgray;
+}
+
+.buttons {
+    display: flex;
+    height: 20svh;
+    width: 100%;
+    color: lightblue;
+    font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
+    gap: 280px;
+    margin-top: 24px;
+}
+
+.form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-1,
+.player-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
