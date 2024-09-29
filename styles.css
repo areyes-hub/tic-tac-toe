@@ -181,3 +181,9 @@ button:focus {
     justify-content: center;
     align-items: center;
 }
+
+.score-1,
+.score-2 {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
