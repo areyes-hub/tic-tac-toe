@@ -1,6 +1,17 @@
 alert("For the best experience, play on a desktop or laptop or use the 'Tab' key to navigate the input fields. Thank you for playing!!");
+
 let player = [{}, {}];
 let activePlayer = player[0];
+
+let pScores = [0, 0];
+
+function incrementP1() {
+    return pScores[0] += 1;
+}
+
+function incrementP2() {
+    return pScores[1] += 1;
+}
 
 function swap() {
     if (activePlayer === player[0]) {
@@ -37,6 +48,11 @@ const name1 = document.querySelector("#name-1");
 const symbol1 = document.querySelector("#sign-1");
 const name2 = document.querySelector("#name-2");
 const symbol2 = document.querySelector("#sign-2");
+
+let score1 = document.querySelector(".score-1");
+score1.textContent = `Score: ${pScores[0]}`;
+let score2 = document.querySelector(".score-2");
+score2.textContent = `Score: ${pScores[1]}`;
 
 const firstTitle = document.querySelector(".title-1");
 const title = document.querySelector(".title");
@@ -120,6 +136,14 @@ function check() {
                 Board.board[i][j] = '';
             }
         }
+        if (activePlayer === player[0]) {
+            incrementP1();
+            score1.textContent = `Score: ${pScores[0]}`;
+        }
+        else if (activePlayer === player[1]) {
+            incrementP2();
+            score2.textContent = `Score: ${pScores[1]}`;
+        }
     }
 };
 
@@ -132,7 +156,10 @@ f1_button.addEventListener("click", () => {
     let avatarOne = document.createElement("h1");
     avatarOne.textContent = symbol1.value;
     avatarOne.style.paddingTop = "16px";
-    avatarOne.style.color = "yellow";
+    avatarOne.style.color = "lightblue";
+    score1.style.opacity = "1";
+    score1.style.paddingTop = "16px";
+    score1.style.color = "yellow";
     first.appendChild(avatarOne);
 })
 const f2_button = document.querySelector(".f2-btn");
@@ -144,7 +171,10 @@ f2_button.addEventListener("click", () => {
     let avatarTwo = document.createElement("h1");
     avatarTwo.textContent = symbol2.value;
     avatarTwo.style.paddingTop = "16px";
-    avatarTwo.style.color = "yellow";
+    avatarTwo.style.color = "lightblue";
+    score2.style.opacity = "1";
+    score2.style.paddingTop = "16px";
+    score2.style.color = "yellow";
     second.appendChild(avatarTwo);
     table.style.height = "450px";
     table.style.opacity = "1";
@@ -225,21 +255,20 @@ const grid = (function () {
     }
 })();
 
-function createPlayer(name, sign) {
+function createPlayer(name, sign, score) {
     this.name = name,
-        this.sign = sign
-    let score = 0;
-    const win = () => ++score;
-    const getScore = () => score;
-    return { name, sign, win, getScore };
+        this.sign = sign,
+        this.score = score
+    return { name, sign, score };
 }
 
 const player1 = (function () {
     p1_form.addEventListener("submit", (event) => {
         event.preventDefault();
-        let p1 = createPlayer(name1, symbol1);
+        let p1 = createPlayer(name1, symbol1, pScores.ps1);
         player[0].name = p1.name.value;
         player[0].sign = p1.sign.value;
+        player[0].score = pScores.ps1;
         p1_form.reset();
         return { p1 };
     })
@@ -248,7 +277,7 @@ const player1 = (function () {
 const player2 = (function () {
     p2_form.addEventListener("submit", (event) => {
         event.preventDefault();
-        let p2 = createPlayer(name2, symbol2);
+        let p2 = createPlayer(name2, symbol2, 0);
         player[1].name = p2.name.value;
         player[1].sign = p2.sign.value;
         p2_form.reset();
