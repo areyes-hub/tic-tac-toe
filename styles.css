@@ -50,6 +50,16 @@ button:focus {
     padding-top: 24px;
 }
 
+.title-1 {
+    position: absolute;
+    bottom: 380px;
+    color: yellow;
+    font-size: 64px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
 .title {
     color: yellow;
     font-size: xxx-large;
@@ -58,16 +68,17 @@ button:focus {
     transition: opacity 1s;
 }
 
-.change-btn {
+.refresh {
     color: yellow;
-    padding: 4px;
+    padding: 12px;
     margin-bottom: 16px;
-    display: none;
-    transition: display 1s;
+    display: flex;
+    opacity: 0;
+    transition: opacity 1s;
 }
 
 .board {
-    height: 0px;
+    height: 200px;
     width: 450px;
     margin: auto;
     display: grid;
@@ -146,14 +157,13 @@ button:focus {
 
 .buttons {
     display: flex;
-    height: 80svh;
+    height: 40svh;
     width: 76%;
-    /* flex-wrap: wrap; */
     transition: height 1s;
     color: lightblue;
     font-family: sans-serif;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: start;
     gap: 255px;
     margin-top: 8px;
 }
