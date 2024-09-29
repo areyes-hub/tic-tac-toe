@@ -1,8 +1,6 @@
-alert("For the best experience, use the 'Tab' key to navigate the input fields. Thank you for playing!!");
+alert("For the best experience, play on a desktop or laptop or use the 'Tab' key to navigate the input fields. Thank you for playing!!");
 let player = [{}, {}];
 let activePlayer = player[0];
-
-let tl, tc, tr, cl, cc, cr, bl, bc, br;
 
 function swap() {
     if (activePlayer === player[0]) {
@@ -13,6 +11,25 @@ function swap() {
     }
 };
 
+function refresh() {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            Board.board[i][j] = '';
+        }
+    }
+    game.cell(tl, '');
+    game.cell(tc, '');
+    game.cell(tr, '');
+    game.cell(cl, '');
+    game.cell(cc, '');
+    game.cell(cr, '');
+    game.cell(bl, '');
+    game.cell(bc, '');
+    game.cell(br, '');
+}
+
+let tl, tc, tr, cl, cc, cr, bl, bc, br;
+
 const p1_form = document.querySelector(".pf-1");
 const p2_form = document.querySelector(".pf-2");
 
@@ -21,10 +38,13 @@ const symbol1 = document.querySelector("#sign-1");
 const name2 = document.querySelector("#name-2");
 const symbol2 = document.querySelector("#sign-2");
 
+const firstTitle = document.querySelector(".title-1");
 const title = document.querySelector(".title");
 const table = document.querySelector(".board");
 const btns = document.querySelector(".buttons");
 const cell = document.querySelector(".cell");
+const refr = document.querySelector(".refresh");
+refr.addEventListener("click", refresh);
 
 const Board = (function () {
     const board = [
@@ -43,7 +63,7 @@ const game = (function () {
 })();
 // I know there MUST be a more efficient way of
 // handling this, but Im still working on it ;)
-function check(pos) {
+function check() {
     if (Board.board[0][0] == activePlayer.sign &&
         Board.board[0][1] == activePlayer.sign &&
         Board.board[0][2] == activePlayer.sign ||
@@ -100,15 +120,6 @@ function check(pos) {
                 Board.board[i][j] = '';
             }
         }
-        game.cell(tl, '');
-        game.cell(tc, '');
-        game.cell(tr, '');
-        game.cell(cl, '');
-        game.cell(cc, '');
-        game.cell(cr, '');
-        game.cell(bl, '');
-        game.cell(bc, '');
-        game.cell(br, '');
     }
 };
 
@@ -137,9 +148,10 @@ f2_button.addEventListener("click", () => {
     second.appendChild(avatarTwo);
     table.style.height = "450px";
     table.style.opacity = "1";
-    btns.style.height = "20svh";
+    firstTitle.style.opacity = "0";
     title.style.opacity = "1";
-})
+    refr.style.opacity = "1";
+});
 
 const grid = (function () {
     tl = document.querySelector(".tl");
@@ -216,7 +228,10 @@ const grid = (function () {
 function createPlayer(name, sign) {
     this.name = name,
         this.sign = sign
-    return { name, sign };
+    let score = 0;
+    const win = () => ++score;
+    const getScore = () => score;
+    return { name, sign, win, getScore };
 }
 
 const player1 = (function () {
