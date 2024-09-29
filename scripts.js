@@ -1,3 +1,4 @@
+alert("For the best experience, use the 'Tab' key to navigate the input fields. Thank you for playing!!");
 let player = [{}, {}];
 let activePlayer = player[0];
 
